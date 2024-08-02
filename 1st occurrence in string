@@ -1,0 +1,33 @@
+28. Find the Index of the First Occurrence in a String
+
+
+
+MY APPROACH ( INEFFICIENT FOR LARGE DATA )
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int haylen = haystack.size();
+        int neelen = needle.size();
+
+        // Edge cases
+        if (neelen == 0) return 0;
+        if (haylen < neelen) return -1;
+
+        // Traverse through the haystack
+        for (int i = 0; i <= haylen - neelen; ++i) {
+            int j = 0;
+            while (j < neelen && haystack[i + j] == needle[j]) {
+                ++j;
+            }
+            if (j == neelen) { // Found the needle
+                return i;
+            }
+        }
+        
+        // If needle was not found
+        return -1;
+    }
+};
+
+
